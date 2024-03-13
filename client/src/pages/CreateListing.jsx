@@ -19,6 +19,7 @@ export default function CreateListing() {
     description: '',
     address: '',
     type: 'rent',
+    noofmonths: 1,
     bedrooms: 1,
     bathrooms: 1,
     regularPrice: 1000,
@@ -103,7 +104,7 @@ export default function CreateListing() {
         type: e.target.id,
       });
     }
-
+  
     if (
       e.target.id === 'parking' ||
       e.target.id === 'furnished' ||
@@ -114,7 +115,7 @@ export default function CreateListing() {
         [e.target.id]: e.target.checked,
       });
     }
-
+  
     if (
       e.target.type === 'number' ||
       e.target.type === 'text' ||
@@ -125,7 +126,15 @@ export default function CreateListing() {
         [e.target.id]: e.target.value,
       });
     }
+  
+    if (e.target.id === 'noofmonths') {
+      setFormData({
+        ...formData,
+        noofmonths: parseInt(e.target.value, 10),
+      });
+    }
   };
+  
   const handleSubmit = async (e) => {
 
     e.preventDefault();
@@ -246,6 +255,19 @@ export default function CreateListing() {
                 />
                 <span>Offer</span>
               </div>
+            </div>
+            <div className='flex items-center gap-2'>
+              <input
+                type='number'
+                id='noofmonths'
+                min='1'
+                max='120' // Adjust the maximum value based on your requirements
+                required
+                className='p-3 border-gray-300 rounded-lg'
+                onChange={handleChange}
+                value={formData.noofmonths}
+              />
+              <p>Number of Months</p>
             </div>
             <div className='flex flex-wrap gap-7'>
               {/* Number Inputs */}

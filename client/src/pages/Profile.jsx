@@ -48,7 +48,10 @@ const Profile = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    if (e.target.id === 'username') {
+      setFormData({ ...formData, [e.target.id]: e.target.value });
+    }
+    // You can add additional conditions for other fields if needed
   };
 
   const handleTogglePassword = () => {

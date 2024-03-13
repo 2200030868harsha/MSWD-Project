@@ -257,6 +257,19 @@ export default function CreateListing() {
               <span>Offer</span>
             </div>
           </div>
+          <div className='flex items-center gap-2'>
+            <input
+              type='number'
+              id='noofmonths'
+              min='1'
+              max='24'  // Adjust the maximum value as needed
+              required
+              className='p-3 border border-gray-300 rounded-lg'
+              onChange={handleChange}
+              value={formData.noofmonths}
+            />
+            <p>Number of Months</p>
+          </div>
           <div className='flex flex-wrap gap-6'>
             <div className='flex items-center gap-2'>
               <input

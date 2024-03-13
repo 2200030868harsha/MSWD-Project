@@ -42,6 +42,10 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    noofmonths: {
+      type: Number,
+      required: true,
+    },
     offer: {
       type: Boolean,
       required: true,
