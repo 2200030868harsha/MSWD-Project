@@ -1,8 +1,9 @@
-import express  from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
+import adminRouter from './routes/admin.route.js'; // Add this line
 import cookieParser from 'cookie-parser';
 import listingRouter from './routes/listing.route.js';
 dotenv.config();
@@ -19,24 +20,23 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-
 app.listen(3000,() =>{
       console.log('Server is running on port 3000');
-}
-);
+});
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
+app.use('/api/admin', adminRouter); // Add this line
 app.use('/api/listing',listingRouter);
 
-app.use((err, req, res, next) =>{
-    const statusCode=err.statusCode || 500;
-    const message= err.message ||'Internal Server Error';
+app.use((err, req, res, next) => {
+    console.error(err); // Log the error to the console
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
     return res.status(statusCode).json({
-        success:false,
+        success: false,
         statusCode,
         message,
-        
-
     });
 });
+

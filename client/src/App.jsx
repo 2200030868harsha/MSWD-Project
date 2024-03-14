@@ -1,3 +1,5 @@
+// App.js
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
@@ -10,6 +12,8 @@ import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
+import AdminSignIn from './pages/AdminSignIn'; // Import AdminSignIn component
+import AdminNavbar from './components/AdminNavbar';
 
 const App = () => {
   return (
