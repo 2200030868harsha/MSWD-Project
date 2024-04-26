@@ -7,7 +7,6 @@ export const signup = async (req, res, next) => {
   const { AdminId, password } = req.body;
 
   try {
-    // Check if the AdminId already exists
     const existingAdmin = await Admin.findOne({ AdminId });
     if (existingAdmin) {
       return next(adminCreationFailedError());
@@ -55,5 +54,14 @@ export const signin = async (req, res, next) => {
       res.status(200).json({ success: true, token });
     } catch (error) {
       return next(adminNotFoundError());
+    }
+  };
+
+  export const getAllUsers = async (req, res, next) => {
+    try {
+      const users = await User.find(); // Fetch all users from the database
+      res.status(200).json(users); // Send the users array as JSON response
+    } catch (error) {
+      next(error); // Pass any errors to the error handling middleware
     }
   };

@@ -74,3 +74,16 @@ export const getUser = async (req, res, next) => {
     next(error);
   }
 };
+
+
+// Controller function to get all users
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find(); // Fetch all users from the database
+    res.status(200).json(users); // Send the users array as JSON response
+  } catch (error) {
+    next(error); // Pass any errors to the error handling middleware
+  }
+};
+
+

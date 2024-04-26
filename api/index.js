@@ -6,6 +6,7 @@ import authRouter from './routes/auth.route.js';
 import adminRouter from './routes/admin.route.js'; // Add this line
 import cookieParser from 'cookie-parser';
 import listingRouter from './routes/listing.route.js';
+import path from 'path';
 dotenv.config();
 
 process.env.JWT_SECRET = 'Harshabhee@2004';
@@ -14,6 +15,7 @@ mongoose.connect("mongodb+srv://harsha:Harshabhee2004@cluster0.vxvlmln.mongodb.n
 }).catch((err)=>{
     console.log(err);
 })
+const __dirname = path.resolve();
 const app=express();
 
 app.use(express.json());
@@ -28,6 +30,12 @@ app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
 app.use('/api/admin', adminRouter); // Add this line
 app.use('/api/listing',listingRouter);
+
+app.use(express.static(path.join(__dirname,'/client/dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  })
 
 app.use((err, req, res, next) => {
     console.error(err); // Log the error to the console

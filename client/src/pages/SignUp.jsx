@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
 
+const isValidPassword = (password) => {
+  // This regular expression checks for at least one letter and one number
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  return regex.test(password);
+};
+
 const SignUp = () => {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
@@ -22,7 +28,10 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!isValidPassword(formData.password)) {
+      setError('Password must contain at least one letter and one number.');
+      return;
+    }
     try {
       setLoading(true);
 
