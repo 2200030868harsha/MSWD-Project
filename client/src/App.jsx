@@ -12,8 +12,7 @@ import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
-import AdminSignIn from './pages/AdminSignIn'; // Import AdminSignIn component
-import AdminNavbar from './components/AdminNavbar';
+
 
 const App = () => {
   return (
