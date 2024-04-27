@@ -14,6 +14,8 @@ import Search from './pages/Search';
 import AdminSignIn from './pages/AdminSignIn';
 import AdminHome from './pages/AdminHome';
 import UsersPage from './pages/UsersPage';
+import Services from './pages/Services';
+import Team from './pages/Team';
 
 const App = () => {
   return (
@@ -26,7 +28,9 @@ const App = () => {
         <Route path="/admin/users" element={<UsersPage />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/Team" element={<Team />} />
         <Route path="/about" element={<About />} />
+        <Route path="/Services" element={<Services/>}/>
         <Route path="/search" element={<Search />} />
         <Route path="/listing/:listingId" element={<Listing />} />
         <Route element={<PrivateRoute />}>

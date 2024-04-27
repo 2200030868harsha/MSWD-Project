@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -47,7 +47,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{
+      background: `url('https://media.licdn.com/dms/image/C5612AQEEf9kIczF-Iw/article-cover_image-shrink_600_2000/0/1633548191707?e=2147483647&v=beta&t=LHISzgj0BWNm58bGauJ9QK3IrT0ojakxTnBFLpL-dBg') center/cover no-repeat`,
+      minHeight: '100vh', // Set a minimum height to cover the entire viewport
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
       {/* top */}
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
         <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
@@ -65,7 +72,7 @@ const Home = () => {
           to={'/search'}
           className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
         >
-          Let's get started...
+          
         </Link>
       </div>
 
